@@ -1,9 +1,0 @@
-- pokud chcy dat selector :focus jak to pridam do elementu ktery dedi od jineho (pripad shared inputstyle a emailinput)
-
-- co kdyz mám do elementu vloženo více divu? Jak je ostyluju? Musím jim dát speciální jmeno?
-
--red underline duplicitni kod
-
-
-
-- useQueryPar v useEffect hazi chybu, proc?
