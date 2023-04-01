@@ -1,4 +1,4 @@
-import { StyledForm, StyledInput, SubmitBtn, EmailInput, UserNameInput, PassNotMatch, IconContainer } from "./LoginForm.styled";
+import { StyledForm, StyledInput, SubmitBtn, EmailInput, UserNameInput, PassNotMatch, IconContainer } from "../styles/Form.styled";
 import { useState, useEffect, useRef } from "react";
 import keyIcon from "../../assets/keyIcon.png";
 

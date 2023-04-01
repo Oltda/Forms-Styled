@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
 import NavBar from './components/NavBar/NavBar';
-import TestPage from './pages/TestPage';
+import Slides from './pages/Slides';
 import OrderForm from './components/OrderForm/OrderForm';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/test" element={<TestPage />} />
+          <Route path="/slides" element={<Slides />} />
 
           <Route path="/order" element={<OrderForm />} />
 
