@@ -1,19 +1,19 @@
-import { KeyboardEvent, ChangeEvent, useRef, useState, useEffect } from "react"
+import { KeyboardEvent, ChangeEvent, useState, useEffect } from "react"
 import { useQueryParams } from "../../hooks/useQueryParams"
-import { StyledForm, StyledInput, SubmitBtn, EmailInput, UserNameInput, PassNotMatch, IconContainer } from "../LoginForm/LoginForm.styled"
+import { StyledForm, StyledInput, SubmitBtn, IconContainer } from "../styles/Form.styled";
 import keyIcon from "../../assets/keyIcon.png";
 
 
 const OrderForm = () => {
     const [name, setName] = useState("")
-    const [age, setAge] = useState<number>(0)
+    const [age, setAge] = useState<number | string>("")
     const [loan, setLoan] = useState(false)
     const [isComplete, setIsComplete] = useState(false)
     const params = useQueryParams()
     // TEST
 
     useEffect(() => {
-        if (name.trim() !== "" && age > 0) {
+        if (name.trim() !== "" && typeof age === "number" && age > 0) {
             setIsComplete(true)
         } else {
             setIsComplete(false)
@@ -36,13 +36,13 @@ const OrderForm = () => {
 
 
 
-    const handleAge = (e: ChangeEvent<HTMLInputElement>): number => {
+    const handleAge = (e: ChangeEvent<HTMLInputElement>): number | string => {
         const output = parseInt(e.currentTarget.value);
 
-        return Number.isNaN(output) ? 0 : output
+        return Number.isNaN(output) ? "" : output
     }
 
-    //onChange={(e: ChangeEvent<HTMLInputElement>) => setAge(e.currentTarget.value)} 
+
 
     return (
         <div style={{ position: "absolute", width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -51,12 +51,13 @@ const OrderForm = () => {
                     <img src={keyIcon} />
                     <span>✔</span>
                 </IconContainer>
-                <StyledInput onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.currentTarget.value)} type="text" value={name} placeholder="Customer name" />
-                <StyledInput onChange={(e: ChangeEvent<HTMLInputElement>) => setAge(handleAge(e))} type="text" value={age} placeholder="Customer age" />
+                <StyledInput onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.currentTarget.value)} type="text" value={name} placeholder="Jméno" />
+
+                <StyledInput id="age" onChange={(e: ChangeEvent<HTMLInputElement>) => setAge(handleAge(e))} type="number" value={age} placeholder="Věk" />
 
                 <div>
                     <input id="loan" type="checkbox" onChange={() => setLoan(!loan)} checked={loan} />
-                    <label htmlFor="loan">Mate pujcku</label>
+                    <label htmlFor="loan">Máte již půjčku</label>
                 </div>
 
                 <SubmitBtn isComplete={isComplete} type="submit" value="Odeslat" />
